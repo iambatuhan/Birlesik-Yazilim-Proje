@@ -1,0 +1,43 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Admin>
+@{
+    ViewBag.Title = "AdminList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<link rel="stylesheet" href=" ~/fonts/StyleSheet1.css">
+
+<h2>AdminList</h2>
+<br />
+@using (Html.BeginForm())
+{
+    <p style="text-align:right">
+        Ara:@Html.TextBox("p")
+        <input type="submit" value="bul" />
+    </p>
+}
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Admin Ad</th>
+        <th>Admin Rol</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.AdminID</td>
+            <td>@x.UserName </td>
+            <td>@x.AdminRole</td>
+           
+           
+            
+            <td><a href="/Admin/DeleteAdmin/@x.AdminID" class="custom-btn btn-1" style="text-align:center" target="_self">Sil</a></td>
+            <td><a href="/Ekle/UpdateEkle/@x.AdminID" class="custom-btn btn-6" style="text-align:center" target="_self">Güncelle</a></td>
+
+
+
+        </tr>
+    }
+</table>
+<a href="/Admin/AddNew/" class="custom-btn btn-4" style="text-align:center">Yeni Admin Ekle</a>

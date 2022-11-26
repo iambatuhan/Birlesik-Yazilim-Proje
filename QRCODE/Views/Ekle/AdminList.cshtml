@@ -1,0 +1,76 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Ekle>
+@using PagedList;
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "AdminList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<link rel="stylesheet" href=" ~/fonts/StyleSheet1.css">
+
+<h2>Listele</h2>
+<br />
+@using (Html.BeginForm())
+{
+    <p style="text-align:right">
+        Ara:@Html.TextBox("p")
+        <input type="submit" value="bul" />
+    </p>
+}
+<head>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Admin Ad</th>
+        <th>BelgeSahibi AdSoyad</th>
+        <th>Tarih</th>
+        <th>SertifikaKodu</th>
+        <th>CategoryID</th>
+        <th>Category Adı</th>
+        <th>Belge Olustur</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.QRKodID</td>
+            <td>@x.Admin.UserName </td>
+            <td>@x.User.UserName</td>
+            <td>@x.OlusturmaDate.ToShortDateString()</td>
+            <td>@x.SertifikaKodu</td>
+            <td>@x.CategoryID</td>
+            <td>@x.Category.CategoryName</td>
+            <td><a href="/Ekle/BelgeOlustur1/@x.QRKodID" class="custom-btn btn-5" style="text-align:center" target="_blank">Görüntüle</a></td>
+            <td><a href="/Ekle/DeleteEkle/@x.QRKodID" class="custom-btn btn-1" style="text-align:center" target="_self">Sil</a></td>
+            <td><a href="/Ekle/UpdateEkle/@x.QRKodID" class="custom-btn btn-6" style="text-align:center" target="_self">Güncelle</a></td>
+
+
+
+        </tr>
+    }
+</table>
+<a href="/Ekle/AddNew/" class="custom-btn btn-4" style="text-align:center">Yeni Sertifika  Ekle</a>
+
+<center>
+    @Html.PagedListPager((IPagedList)Model, page => Url.Action("AdminList", new { page }))
+</center>
+

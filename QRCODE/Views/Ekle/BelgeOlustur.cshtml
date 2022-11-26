@@ -1,0 +1,110 @@
+﻿
+@model IEnumerable<EntityLayer.Concrete.Ekle>
+@{
+    ViewBag.Title = "BelgeOlustur";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<link rel="stylesheet" href=" ~/fonts/StyleSheet2.css">
+<title></title>
+<div class="container emp-profile">
+    <form method="post">
+
+        <br />
+        @foreach (var x in Model)
+        {
+            <h1 style="text-align:center">Dinomo Erp <span>@x.Category.CategoryName</span> Sertifika  Belgesi</h1>
+            <br />
+            <div style="text-align:right"><h5>Sertifika Kodu:@x.QRKodID</h5></div>
+            <br />
+         
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="profile-img" style="text-align:left">
+                      
+                        <img src="@x.User.UserImage" style="width:180px;height:180px" alt="" />
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="profile-head">
+                        <h5>
+                            @x.User.UserName
+                        </h5>
+                        <h6 style="text-align:left">Sertifika Kodu:<span>@x.QRKodID</span></h6>
+                        @*<p class="proile-rating">Ortalama : <span>@x.Rating</span></p>*@
+                        <div class="nav nav-tabs">
+
+
+                        </div>
+                        <h5>
+                            <span>@x.User.UserTc</span> Tc Kimlik Numaralı<span> @x.User.UserName</span> Dinomo Erp <span> @x.Category.CategoryName</span> Kursunu<span>
+                                @x.Rating
+                            </span> ortalama ile bitirip sertifika almaya hak kazanmıştır.
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="profile-work">
+
+                        <p>SKILLS</p>
+                        <h5>@x.OgrendigiYetenekler1</h5>
+                        <h5>@x.OgrendiğiYetenekeler2</h5>
+                        <h5>@x.OgrendiğiYetenekeler3</h5>
+
+                    </div>
+                </div>
+                <div class="col-md-8">
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label></label>
+                        </div>
+                        <div class="col-md-6">
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Kurs Başlangıc ve Bitişi</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>@x.BaslamaDate.ToShortDateString()-<span>@x.BitisDate.ToShortDateString()</span></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Sertifikayı Veren Yetkili Kişi</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>@x.Admin.UserName</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Belgenin Oluşturulma Tarihi</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>@x.OlusturmaDate.ToShortDateString()</p>
+                        </div>
+
+                        <br />
+                        <br />
+                        <br />
+
+                        <div class="profile-img" style="text-align:left">
+
+
+                        </div>
+                        <div style="text-align:right"><h5>Sertifika Kodu:@x.QRKodID</h5></div>
+                    </div>
+                    <div style="text-align:right"><h5>Sertifika Kodu:@x.QRKodID</h5></div>
+                </div>
+        
+            </div>
+        }
+    </form>
+</div>
+

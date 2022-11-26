@@ -1,0 +1,63 @@
+﻿@model EntityLayer.Concrete.Ekle
+@{
+    ViewBag.Title = "UpdateEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>UpdateEkle</h2>
+<link rel="stylesheet" href=" ~/fonts/StyleSheet1.css">
+@using (Html.BeginForm("UpdateEkle", "Ekle", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <br />
+    @Html.Label("B")
+    @Html.TextBoxFor(x => x.QRKodID, new { @class = "form-control" })
+
+    <br />
+    @Html.Label(" Kişi")
+    @Html.TextBoxFor(x => x.UserID, new { @class = "form-control" })
+
+    <br />
+    @Html.Label("Belge Verilecek Kişinin Ögrendiği Yetenek1")
+    @Html.TextBoxFor(x => x.OgrendigiYetenekler1, new { @class = "form-control" })
+    <br />
+    <br />
+    @Html.Label("Belge Verilecek Kişinin Ögrendiği Yetenek2")
+    @Html.TextBoxFor(x => x.OgrendiğiYetenekeler2, new { @class = "form-control" })
+    <br />
+    <br />
+    @Html.Label("Belge Verilecek Kişinin Ögrendiği Yetenek2")
+    @Html.TextBoxFor(x => x.OgrendiğiYetenekeler3, new { @class = "form-control" })
+    <br />
+    <br />
+
+    @Html.Label("Belgenin Olusturma Tarihi")
+    @Html.TextBoxFor(x => x.OlusturmaDate, new { @class = "form-control" })
+    <br />
+    <br />
+
+    @Html.Label("Kurs Başlama")
+    @Html.TextBoxFor(x => x.BaslamaDate, new { @class = "form-control" })
+    <br />
+    <br />
+
+    @Html.Label("Kurs Bitis")
+    @Html.TextBoxFor(x => x.BitisDate, new { @class = "form-control" });
+    <br />
+
+    @Html.Label("Kategori")
+    @Html.TextBoxFor(x => x.CategoryID, new { @class = "form-control" })
+    <br />
+    @Html.Label("Veren Kişi")
+    @Html.TextBoxFor(x => x.AdminID, new { @class = "form-control" })
+    <br />
+    <br />
+    @Html.Label("Ortalaması")
+    @Html.TextBoxFor(x => x.Rating, new { @class = "form-control" })
+    <br />
+    @Html.Label("BelgeTur")
+    @Html.TextBoxFor(x => x.BelgeTur, new { @class = "form-control" })
+    <br />
+
+    <br />
+    <button class="btn btn-outline-primary">Kaydet</button>
+}

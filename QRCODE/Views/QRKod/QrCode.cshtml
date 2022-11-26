@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "QrCode";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<link rel="stylesheet" href=" ~/fonts/StyleSheet1.css">
+<div>
+    @using (Html.BeginForm("QrCode", "QRKod", FormMethod.Post))
+    {
+
+
+        <input type="text" name="kod" class="form-control" placeholder="Linki buraya Yapıştırın">
+        <button class=' custom-btn btn-5' type="submit">Oluştur</button>
+
+
+
+    }
+    <br />
+    @if (ViewBag.karekodimage != null)
+    {
+        <img src="@ViewBag.karekodimage" style="width:200px; height:200px;place-content:center" />
+    }
+</div>
+

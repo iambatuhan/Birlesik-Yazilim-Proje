@@ -1,0 +1,64 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Ekle>
+@using PagedList;
+@using PagedList.Mvc;
+<!DOCTYPE html>
+<head>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+
+    <h2 style="text-align:center;font-family:'Global Serif'">UserList</h2>
+    <br />
+    @using (Html.BeginForm())
+    {
+        <p style="text-align:center">
+            Ara:@Html.TextBox("p")
+            <input type="submit" value="bul" />
+        </p>
+    }
+    <br />
+    <table class="table table-bordered">
+        
+        @foreach (var x in Model)
+        {
+            <tr>
+                <th>ID</th>
+                <th>Admin Ad</th>
+                <th>BelgeSahibi AdSoyad</th>
+                <th>Tarih</th>
+                <th>CategoryID</th>
+                <th>Category Adı</th>
+                <th>Belge Olustur</th>
+
+            </tr>
+            <tr>
+                <td>@x.QRKodID</td>
+                <td>@x.Admin.UserName </td>
+                <td>@x.User.UserName</td>
+                <td>@x.OlusturmaDate.ToShortDateString()</td>
+                <td>@x.CategoryID</td>
+                <td>@x.Category.CategoryName</td>
+                <td><a href="/Ekle/BelgeOlustur1/@x.QRKodID" class="custom-btn btn-5" style="text-align:center">Görüntüle</a></td>
+
+
+
+
+            </tr>
+        }
+    </table>
+    @Html.PagedListPager((IPagedList)Model, page => Url.Action("List", new { page }))
